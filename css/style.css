@@ -1,0 +1,39 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Nunito', sans-serif;
+}
+html, body {
+    height: 100%;
+    background-color: antiquewhite;
+    overflow: unset;
+}
+.page {
+    height: 2000px;
+    margin-top: 100vh;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+/*.header {
+    width: auto;
+    height: 100vh;
+}*/
+.head-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav {
+    position: sticky !important;
+    top: 30px;
+    width: 100%;
+    z-index: 999;
+}
+
+
+
+.my-carousel {
+    position: absolute;
+    top: 0;
+}
