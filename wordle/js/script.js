@@ -1,7 +1,7 @@
 var currentRow = 0;
 var currentCol = 0;
 var attemptWord = '';
-var objectiveWord = 'TESLA';
+var objectiveWord = 'IÑIGO';
 
 window.onload = function() {
     let gridObject = document.getElementsByClassName("letter-grid")[0];
