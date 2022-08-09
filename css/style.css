@@ -140,3 +140,7 @@ body{
 .links button.github {
     background: linear-gradient(45deg, #33333388, #333333);
 }
+
+.links button.wordle {
+    background: linear-gradient(45deg, #6aaa64, #c9b458);
+}
