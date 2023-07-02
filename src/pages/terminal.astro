@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Terminal Linux</title>
+    <style>
+        #terminal {
+            width: 500px;
+            height: 300px;
+            font-family: monospace;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        #terminal div {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal"></div>
+</body>
+</html>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // get the terminal object
+    const terminal = document.getElementById("terminal");
+    let commandPreview;
+    let currentCommand = "";
+    let inputLine;
+
+    // Función para mostrar el comando y la salida en el terminal
+    function printToTerminal(command, output) {
+        
+        let finalCommand = document.createElement("span");
+        finalCommand.textContent = command;
+        inputLine.appendChild(finalCommand);
+
+        if (output) {
+            const outputLines = output.split("\n");
+            outputLines.forEach(function(line) {
+                const outputLine = document.createElement("div");
+                outputLine.textContent = line;
+                terminal.appendChild(outputLine);
+            });
+        }
+    }
+
+    // Función para procesar el comando ingresado por el usuario
+    function processCommand(event) {
+        const validKeys = /^[a-zA-Z\s]$/;
+
+        // si la tecla pulsada es Enter
+        if (event.key === "Enter") {
+            // se guarda el command el texto del input de texto
+            let command = commandPreview.textContent.trim();
+            currentCommand = "";
+            // se elimina el campo de input
+            commandPreview.remove();
+
+            // Lógica para procesar el comando y obtener la salida correspondiente
+            // Aquí puedes agregar la lógica para los diferentes comandos de tu terminal simulada
+
+            switch(command) {
+                case "whoami":
+                    printToTerminal(command, "root\ntest");
+                    break;
+                default:
+                    printToTerminal(command, "Comando no reconocido. Inténtalo de nuevo.");
+                    break;
+            }
+
+            commandPreview = document.createElement("span");
+            commandPreview.id = "commandPreview"
+
+            inputLine = document.createElement("div");
+            inputLine.textContent = "iherrero@webpage $ ";
+            inputLine.appendChild(commandPreview)
+            terminal.appendChild(inputLine);
+
+            terminal.scrollTop = terminal.scrollHeight;
+            commandPreview.textContent = "";
+        } else if (event.key === "Backspace") {
+            currentCommand = currentCommand.slice(0, -1);
+        } else if (validKeys.test(event.key) && currentCommand.length < 20) {
+            currentCommand += event.key;
+        }
+
+        commandPreview.textContent = currentCommand;
+    }
+
+    // Agregar la primera línea de user input
+
+    commandPreview = document.createElement("span");
+    commandPreview.id = "commandPreview"
+
+    inputLine = document.createElement("div");
+    inputLine.textContent = "iherrero@webpage $ ";
+    inputLine.appendChild(commandPreview)
+    terminal.appendChild(inputLine);
+
+    document.addEventListener("keydown", processCommand);
+
+});
+</script>
