@@ -1,81 +1,111 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Terminal from "../components/Terminal.astro";
+import Skill from "../components/SkillButton.astro";
+import Card from "../components/Card.astro";
 ---
 
-<Layout title="Welcome to ehe.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iñigo Herrero</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet"></head>
+<body>
+	<div class="app">
+		<div class="terminal-container">
+			hello
+		</div>
+		<div class="info-container">
+			<div class="about">
+				<h1>about me</h1>
+				<p class="info">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  <em>He/him</em></p>
+				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore quaerat quae reprehenderit minus necessitatibus vitae quisquam explicabo iste, fuga soluta. Alias vitae, aliquid quidem pariatur voluptatibus maxime, molestiae harum iure laborum adipisci ratione voluptatum temporibus unde labore perferendis beatae necessitatibus repellat, sunt reiciendis sed qui. Inventore recusandae odit cum repellendus.</p>
+				<div class="signature">signature</div>
+			</div>
+			<div class="skills">
+				<h2>my skills</h3>
+				<div class="skill-container">
+					<Card href="https://www.google.es" title="ejeje" body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore quaerat quae reprehenderit minus necessitatibus vitae quisquam explicabo iste, fuga soluta. Alias vitae, aliquid quidem pariatur voluptatibus maxime, molestiae harum iure laborum adipisci ratione voluptatum temporibus unde labore perferendis beatae necessitatibus repellat, sunt reiciendis sed qui. Inventore recusandae odit cum repellendus."/>
+					<Card href="https://www.google.es" title="ejeje" body="test"/>
+					<Card href="https://www.google.es" title="ejeje" body="test"/>
+					<Card href="https://www.google.es" title="ejeje" body="test"/>
+				</div>
+			</div>
+			<div class="projects">
+				<h2>projects</h3>
+				<div class="project-container">
+					<div class="project">usar templates para esto también</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
+	* {
 		margin: 0;
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+	h1 {
+		font-size: 50px;
+		font-weight: 700;
+		margin-top: 5rem;
 	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
+	h2 {
+		font-size: 30px;
+		font-weight: 700;
+		margin-bottom: 1rem;
 	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
+	.app {
+		display: grid; 
+
+		grid-template-rows: 1fr;
+		grid-template-columns: 1fr 1fr;
+
+		gap: 0px;
+		height: 100vh;
+
+		background: lightskyblue;
 	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
+	.terminal-container {
+		background-color: lightcoral;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
+		align-items: center;
+		justify-items: center;
+		max-height: 100%;
+		
+	}
+	.terminal {
+		width: 90%;
+		height: 700px;
 		padding: 0;
+	}
+	.info-container {
+		background-color: lightgreen;
+		font-family: 'Atkinson Hyperlegible', sans-serif;
+		padding: 2rem;
+	}
+	.info-container h3, p, div {
+		margin-bottom: 1.5rem;
+	}
+	.signature {
+		justify-self: right;
+	}
+	.info {
+		color: pink;
+	}
+	.skill {
+		width: 100%;
+	}
+	.skill-container {
+		display: grid; 
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 1fr 1fr;
+
+		gap: 2rem;
+		height: 100%;
 	}
 </style>
