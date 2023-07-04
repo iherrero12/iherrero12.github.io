@@ -1,7 +1,8 @@
 ---
 import Terminal from "../components/Terminal.astro";
 import Skill from "../components/SkillButton.astro";
-import Card from "../components/Card.astro";
+import SkillCard from "../components/SkillCard.astro";
+import Project from "../components/Project.astro"
 ---
 
 <!DOCTYPE html>
@@ -13,10 +14,11 @@ import Card from "../components/Card.astro";
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet"></head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <body>
 	<div class="app">
 		<div class="terminal-container">
-			hello
+			<div class="terminal"><Terminal></Terminal></div>
 		</div>
 		<div class="info-container">
 			<div class="about">
@@ -28,16 +30,17 @@ import Card from "../components/Card.astro";
 			<div class="skills">
 				<h2>my skills</h3>
 				<div class="skill-container">
-					<Card href="https://www.google.es" title="ejeje" body="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore quaerat quae reprehenderit minus necessitatibus vitae quisquam explicabo iste, fuga soluta. Alias vitae, aliquid quidem pariatur voluptatibus maxime, molestiae harum iure laborum adipisci ratione voluptatum temporibus unde labore perferendis beatae necessitatibus repellat, sunt reiciendis sed qui. Inventore recusandae odit cum repellendus."/>
-					<Card href="https://www.google.es" title="ejeje" body="test"/>
-					<Card href="https://www.google.es" title="ejeje" body="test"/>
-					<Card href="https://www.google.es" title="ejeje" body="test"/>
+					<SkillCard icon="fa-solid fa-infinity" title="devops" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
+					<SkillCard icon="fa-solid fa-brain" title="AI development" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="cybersecurity" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="sample title" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
 				</div>
 			</div>
 			<div class="projects">
 				<h2>projects</h3>
 				<div class="project-container">
-					<div class="project">usar templates para esto también</div>
+					<div class="project"><Project tag="deep-learning" title="museguro" body="Accident prediction on NY streets using a distributed system for machine learning training and YOLOv8 for pedestrian, bicycle and car count from streaming image source."></Project></div>
+					<div class="project"><Project tag="microservices" title="microservice architecture on producing company" body="poner una descripción al PBL1 del máster."></Project></div>
 				</div>
 			</div>
 		</div>
@@ -48,6 +51,11 @@ import Card from "../components/Card.astro";
 <style>
 	* {
 		margin: 0;
+	}
+	html, body {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
 	}
 	h1 {
 		font-size: 50px;
@@ -60,33 +68,29 @@ import Card from "../components/Card.astro";
 		margin-bottom: 1rem;
 	}
 	.app {
-		display: grid; 
-
-		grid-template-rows: 1fr;
-		grid-template-columns: 1fr 1fr;
-
-		gap: 0px;
-		height: 100vh;
-
-		background: lightskyblue;
+		display: flex;
 	}
 	.terminal-container {
 		background-color: lightcoral;
+		flex: 4;
+		height: 100vh;
 		display: grid;
-		align-items: center;
-		justify-items: center;
-		max-height: 100%;
-		
+		place-items: center; 
 	}
 	.terminal {
+		border: 2px solid rgb(255, 170, 0);
+		border-radius: 0.5rem;
+		padding: 0.5rem;
+		height: 75%;
 		width: 90%;
-		height: 700px;
-		padding: 0;
 	}
 	.info-container {
+		flex: 6;
 		background-color: lightgreen;
 		font-family: 'Atkinson Hyperlegible', sans-serif;
-		padding: 2rem;
+		max-height: 100vh;
+		overflow: auto;
+		padding-inline: 2rem;
 	}
 	.info-container h3, p, div {
 		margin-bottom: 1.5rem;
@@ -95,7 +99,7 @@ import Card from "../components/Card.astro";
 		justify-self: right;
 	}
 	.info {
-		color: pink;
+		color: rgb(241, 37, 211);
 	}
 	.skill {
 		width: 100%;
@@ -107,5 +111,11 @@ import Card from "../components/Card.astro";
 
 		gap: 2rem;
 		height: 100%;
+		
+		place-items: center;
+	}
+	.project-container {
+		display: flex;
+		flex-direction: column;
 	}
 </style>

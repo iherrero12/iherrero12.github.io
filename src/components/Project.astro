@@ -1,0 +1,79 @@
+---
+export interface Props {
+	title: string;
+	body: string;
+	tag: string;
+}
+
+const { tag, title, body } = Astro.props;
+---
+
+<li class="project">
+	<h2>
+		> {title}
+	</h2>
+	<div class="tag">
+		<span>{tag}</span>
+	</div>
+	<p>
+		{body}
+	</p>
+</li>
+<style>
+	.project {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		padding: 0.75rem;
+		background-color: rgb(255, 255, 255);
+		background-image: none;
+		background-size: 400%;
+		border-radius: 0.6rem;
+		background-position: 100%;
+		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+	}
+
+	.project > a {
+		width: 100%;
+		text-decoration: none;
+		line-height: 1.4;
+		padding: 1rem 1.3rem;
+		border-radius: 0.35rem;
+		color: #111;
+		background-color: white;
+		opacity: 0.8;
+	}
+	h2 {
+		margin: 0;
+		font-size: 1.25rem;
+		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.tag {
+		margin-top: 0.5rem;
+		margin-left: 0.5rem;
+	}
+	p {
+		margin-top: 0.5rem;
+		margin-left: 1rem;
+		color: #444;
+	}
+	.project:is(:hover, :focus-within) {
+		background-position: 0;
+		background-image: var(--accent-gradient);
+	}
+	.project:is(:hover, :focus-within) h2 {
+		color: rgb(var(--accent));
+	}
+	.tag span {
+		display: inline-block;
+		border: 2px solid rgb(255, 170, 0);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		border-radius: 1rem;
+		color: rgb(255, 170, 0);
+	}
+	li p {
+		padding-right: 2rem;
+	}
+</style>

@@ -1,25 +1,19 @@
 <terminal>
-    <head>
-        <style>
-            #terminal {
-                width: 100%;
-                height: 100%;
-                font-family: monospace;
-                padding: 10px;
-                overflow-y: scroll;
-                background-color: orange;
-            }
-            #terminal div {
-                margin: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="terminal"></div>
-    </body>
+    <div id="terminal" class="terminal"></div>
 </terminal>
 
+<style>
+    .terminal {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: monospace;
+        overflow: hidden;
 
+
+    }
+</style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
