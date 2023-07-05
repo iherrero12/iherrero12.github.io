@@ -1,6 +1,5 @@
 ---
 import Terminal from "../components/Terminal.astro";
-import Skill from "../components/SkillButton.astro";
 import SkillCard from "../components/SkillCard.astro";
 import Project from "../components/Project.astro"
 ---
@@ -74,14 +73,18 @@ import Project from "../components/Project.astro"
 		background-color: lightcoral;
 		flex: 4;
 		height: 100vh;
-		display: grid;
-		place-items: center; 
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
 	}
 	.terminal {
 		border: 2px solid rgb(255, 170, 0);
 		border-radius: 0.5rem;
 		padding: 0.5rem;
 		height: 75%;
+		max-height: 75%;
 		width: 90%;
 	}
 	.info-container {

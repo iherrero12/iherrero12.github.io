@@ -9,7 +9,7 @@
         width: 100%;
         height: 100%;
         font-family: monospace;
-        overflow: hidden;
+        overflow: auto;
 
 
     }
@@ -52,16 +52,11 @@ document.addEventListener("DOMContentLoaded", function() {
             // se elimina el campo de input
             commandPreview.remove();
 
-            // Lógica para procesar el comando y obtener la salida correspondiente
-            // Aquí puedes agregar la lógica para los diferentes comandos de tu terminal simulada
-
-            switch(command) {
-                case "whoami":
-                    printToTerminal(command, "root\ntest");
-                    break;
-                default:
-                    printToTerminal(command, "Comando no reconocido. Inténtalo de nuevo.");
-                    break;
+            // Enabled commands
+            if (command in commandOutputs) {
+                printToTerminal(command, commandOutputs[command]);
+            } else {
+                printToTerminal(command, "Command not found.");
             }
 
             commandPreview = document.createElement("span");
@@ -94,6 +89,14 @@ document.addEventListener("DOMContentLoaded", function() {
     terminal.appendChild(inputLine);
 
     document.addEventListener("keydown", processCommand);
+
+    const commandOutputs = {
+        "pwd": "/home/iherrero/",
+        "uname": "herrerOS\neje",
+        "whoami": "iñigo",
+        "ls": "You have no permission to run this command.",
+        "help": "Available commands:\npwd\nuname"
+    };
 
 });
 </script>
