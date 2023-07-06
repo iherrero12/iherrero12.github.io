@@ -1,5 +1,6 @@
-
-<div id="terminal" class="terminal"></div>
+<terminal>
+    <div id="terminal" class="terminal"></div>
+</terminal>
 
 <style>
     .terminal {
@@ -9,6 +10,9 @@
         height: 100%;
         font-family: monospace;
         overflow: auto;
+    }
+    p {
+        margin: 5rem;
     }
 </style>
 
@@ -20,6 +24,52 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentCommand = "";
     let inputLine;
 
+    // Execute function when user releases a key on the keyboard
+    document.addEventListener("keyup", function(event) {
+        const validKeys = /^[a-zA-Z\s]$/;
+
+        if (event.key === "Enter") {
+            // Cancel the default action
+            event.preventDefault();
+            // Get command
+            let command = commandPreview.textContent.trim();
+            // Reset current command
+            currentCommand = "";
+            // Remove the command preview of the current line
+            commandPreview.remove();
+
+            // Process command
+            if (commandOutputs[command]) {
+                printToTerminal(command, commandOutputs[command]);
+            } else if (restrictedCommands.includes(command)) {
+                printToTerminal(command, `<p style="margin:0">You have no permission to run this command.</p>`);
+            } else if (command === "") {
+                printToTerminal(command, ``);
+            } else {
+                printToTerminal(command, `<p style="margin:0">Command not found.</p>`);
+            }
+            
+            // Create new CommandPreview object
+            commandPreview = document.createElement("span");
+            commandPreview.id = "commandPreview"
+
+            // Create new command input line
+            inputLine = document.createElement("div");
+            inputLine.textContent = "iherrero@webpage $ ";
+            inputLine.appendChild(commandPreview)
+            terminal.appendChild(inputLine);
+
+            // Scroll terminal
+            terminal.scrollTop = terminal.scrollHeight;
+        } else if (event.key === "Backspace") {
+            currentCommand = currentCommand.slice(0, -1);
+        } else if (validKeys.test(event.key) && currentCommand.length < 20) {
+            currentCommand += event.key;
+        }
+        // 
+        commandPreview.textContent = currentCommand;
+    });
+
     // Función para mostrar el comando y la salida en el terminal
     function printToTerminal(command, output) {
         
@@ -28,55 +78,10 @@ document.addEventListener("DOMContentLoaded", function() {
         inputLine.appendChild(finalCommand);
 
         if (output) {
-            const outputLines = output.split("\n");
-            outputLines.forEach(function(line) {
-                const outputLine = document.createElement("div");
-                outputLine.textContent = line;
-                terminal.appendChild(outputLine);
-            });
+            const outputLine = document.createElement("div");
+            outputLine.innerHTML = output;
+            terminal.appendChild(outputLine);
         }
-    }
-
-    // Función para procesar el comando ingresado por el usuario
-    function processCommand(event) {
-        const validKeys = /^[a-zA-Z\s]$/;
-
-        // si la tecla pulsada es Enter
-        if (event.key === "Enter") {
-            // se guarda el command el texto del input de texto
-            let command = commandPreview.textContent.trim();
-            currentCommand = "";
-            // se elimina el campo de input
-            commandPreview.remove();
-
-            // Enabled commands
-            if (commandOutputs[command]) {
-                printToTerminal(command, commandOutputs[command]);
-            } else if (restrictedCommands.includes(command)) {
-                printToTerminal(command, "You have no permission to run this command.");
-            } else {
-                printToTerminal(command, "Command not found.");
-            }
-
-
-            commandPreview = document.createElement("span");
-            commandPreview.id = "commandPreview"
-
-            inputLine = document.createElement("div");
-            inputLine.textContent = "iherrero@webpage $ ";
-            inputLine.appendChild(commandPreview)
-            terminal.appendChild(inputLine);
-
-            terminal.scrollTop = terminal.scrollHeight;
-            commandPreview.textContent = "";
-        } else if (event.key === "Backspace") {
-            currentCommand = currentCommand.slice(0, -1);
-        } else if (validKeys.test(event.key) && currentCommand.length < 20) {
-            currentCommand += event.key;
-            console.debug(event.key);
-        }
-
-        commandPreview.textContent = currentCommand;
     }
 
     // Agregar la primera línea de user input
@@ -86,19 +91,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     inputLine = document.createElement("div");
     inputLine.textContent = "iherrero@webpage $ ";
-    inputLine.appendChild(commandPreview)
+    inputLine.appendChild(commandPreview);
     terminal.appendChild(inputLine);
-
-    document.addEventListener("keydown", processCommand);
 
     const restrictedCommands = ["ls", "cd", "nano", "vi"]
 
     const commandOutputs = {
-        "pwd": "/home/iherrero/",
-        "uname": "herrerOS\neje",
-        "whoami": "iñigo",
-        "ls": "You have no permission to run this command.",
-        "help": "Available commands:\npwd\nuname"
+        "pwd": `<p style="margin:0">/home/iherrero/</p>`,
+        "uname": `<p style="margin:0">herrerOS</p>`,
+        "whoami": `
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <p>IÑIGO HERRERO</p>
+            <span>Hi! I am a developer based on Andoain, Spain.</span>
+            </div>
+        `,
+        "help": `<p style="margin:0">Available commands:</br>pwd</br>uname</p>`
     };
 
 });

@@ -1,5 +1,6 @@
 ---
 import Terminal from "../components/Terminal.astro";
+import HTMLTerminal from "../components/HTMLTerminal.astro"
 import SkillCard from "../components/SkillCard.astro";
 import Project from "../components/Project.astro"
 ---
@@ -17,7 +18,7 @@ import Project from "../components/Project.astro"
 <body>
 	<div class="app">
 		<div class="terminal-container">
-			<div class="terminal"><Terminal></Terminal></div>
+			<div class="terminal"><HTMLTerminal></HTMLTerminal></div>
 		</div>
 		<div class="info-container">
 			<div class="about">
@@ -77,7 +78,6 @@ import Project from "../components/Project.astro"
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
 	}
 	.terminal {
 		border: 2px solid rgb(255, 170, 0);
