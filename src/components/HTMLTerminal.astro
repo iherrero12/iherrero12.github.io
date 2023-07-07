@@ -8,7 +8,8 @@
         padding: 0;
         width: 100%;
         height: 100%;
-        font-family: monospace;
+        font-family: 'Fira Code', monospace;
+        font-weight: 400;
         overflow: auto;
     }
     p {
@@ -55,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Create new command input line
             inputLine = document.createElement("div");
-            inputLine.textContent = "iherrero@webpage $ ";
-            inputLine.appendChild(commandPreview)
+            inputLine.innerHTML = `<p style="margin: 0;"><span style="color: rgb(255, 170, 0); font-weight: 600;text-shadow: 1px 1px 5px rgb(232, 122, 37);">iherrero@webpage</span> ~ </p>`;
+            inputLine.firstChild.appendChild(commandPreview)
             terminal.appendChild(inputLine);
 
             // Scroll terminal
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         let finalCommand = document.createElement("span");
         finalCommand.textContent = command;
-        inputLine.appendChild(finalCommand);
+        inputLine.firstChild.appendChild(finalCommand);
 
         if (output) {
             const outputLine = document.createElement("div");
@@ -88,10 +89,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     commandPreview = document.createElement("span");
     commandPreview.id = "commandPreview"
-
+    
     inputLine = document.createElement("div");
-    inputLine.textContent = "iherrero@webpage $ ";
-    inputLine.appendChild(commandPreview);
+    inputLine.innerHTML = `<p style="margin: 0;"><span style="color: rgb(255, 170, 0); font-weight: 600;text-shadow: 1px 1px 5px rgb(232, 122, 37);">iherrero@webpage</span> ~ </p>`;
+    inputLine.firstChild.appendChild(commandPreview);
     terminal.appendChild(inputLine);
 
     const restrictedCommands = ["ls", "cd", "nano", "vi"]

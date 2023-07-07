@@ -2,7 +2,8 @@
 import Terminal from "../components/Terminal.astro";
 import HTMLTerminal from "../components/HTMLTerminal.astro"
 import SkillCard from "../components/SkillCard.astro";
-import Project from "../components/Project.astro"
+import Project from "../components/Project.astro";
+import Signature from "../components/Signature.astro";
 ---
 
 <!DOCTYPE html>
@@ -13,8 +14,10 @@ import Project from "../components/Project.astro"
     <title>Iñigo Herrero</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet"></head>
+	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <body>
 	<div class="app">
 		<div class="terminal-container">
@@ -25,7 +28,9 @@ import Project from "../components/Project.astro"
 				<h1>about me</h1>
 				<p class="info">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  <em>He/him</em></p>
 				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore quaerat quae reprehenderit minus necessitatibus vitae quisquam explicabo iste, fuga soluta. Alias vitae, aliquid quidem pariatur voluptatibus maxime, molestiae harum iure laborum adipisci ratione voluptatum temporibus unde labore perferendis beatae necessitatibus repellat, sunt reiciendis sed qui. Inventore recusandae odit cum repellendus.</p>
-				<div class="signature">signature</div>
+				<div class="signature">
+					<Signature></Signature>
+				</div>
 			</div>
 			<div class="skills">
 				<h2>my skills</h3>
@@ -49,13 +54,19 @@ import Project from "../components/Project.astro"
 </html>
 
 <style>
+	@viewport {
+	  width: device-width ;
+	  zoom: 1.0 ;
+	} 
 	* {
 		margin: 0;
+		color: rgba(240, 240, 240, 0.87);
 	}
 	html, body {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
+		background-color: #121212;
 	}
 	h1 {
 		font-size: 50px;
@@ -71,9 +82,10 @@ import Project from "../components/Project.astro"
 		display: flex;
 	}
 	.terminal-container {
-		background-color: lightcoral;
+		/* background-color: #0a0c14; */
 		flex: 4;
 		height: 100vh;
+		padding-left: 2rem;
 
 		display: flex;
 		align-items: center;
@@ -85,21 +97,30 @@ import Project from "../components/Project.astro"
 		padding: 0.5rem;
 		height: 75%;
 		max-height: 75%;
-		width: 90%;
+		width: 100%;
+		transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1)
+	}
+	.terminal:hover {
+		box-shadow: 1px 1px 5px rgb(232, 122, 37);
 	}
 	.info-container {
 		flex: 6;
-		background-color: lightgreen;
+		/* background-color: #19b405; */
 		font-family: 'Atkinson Hyperlegible', sans-serif;
 		max-height: 100vh;
+		max-width: 750px;
 		overflow: auto;
-		padding-inline: 2rem;
+		padding-inline: 4rem;
 	}
 	.info-container h3, p, div {
 		margin-bottom: 1.5rem;
 	}
 	.signature {
-		justify-self: right;
+		display: flex;
+		justify-content: right;
+	}
+	#signature {
+		stroke-dasharray: 908;
 	}
 	.info {
 		color: rgb(241, 37, 211);
@@ -120,5 +141,30 @@ import Project from "../components/Project.astro"
 	.project-container {
 		display: flex;
 		flex-direction: column;
+	}
+	@media screen and (max-width:700px) {
+	  /* CSS for screens that are 320 pixels or less will be put in this section */
+		html, body {
+			background-color: rgb(97, 0, 0);
+		}
+		.app {
+			display: flex;
+			flex-direction: column;
+			
+		}
+		.terminal-container {
+			display: grid;
+			place-items: center;
+		}
+		.skill-container {
+			display: grid; 
+			grid-template-rows: 1fr 1fr 1fr 1fr;
+			grid-template-columns: 1fr;
+
+			gap: 2rem;
+			height: 100%;
+			
+			place-items: center;
+		}
 	}
 </style>
