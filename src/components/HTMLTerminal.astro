@@ -102,12 +102,15 @@ document.addEventListener("DOMContentLoaded", function() {
         "uname": `<p style="margin:0">herrerOS</p>`,
         "whoami": `
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <img style="max-width: 50%;" src="../../img/profile_pic.png" alt="Profile Picture of Iñigo Herrero">
             <p>IÑIGO HERRERO</p>
             <span>Hi! I am a developer based on Andoain, Spain.</span>
-            </div>
+        </div>
         `,
         "help": `<p style="margin:0">Available commands:</br>pwd</br>uname</p>`
     };
+
+    printToTerminal("whoami", commandOutputs["whoami"]);
 
 });
 </script>

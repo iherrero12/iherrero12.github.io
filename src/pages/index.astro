@@ -26,7 +26,7 @@ import Signature from "../components/Signature.astro";
 		<div class="info-container">
 			<div class="about">
 				<h1>about me</h1>
-				<p class="info">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  <em>He/him</em></p>
+				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  <em>He/him</em></p>
 				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore quaerat quae reprehenderit minus necessitatibus vitae quisquam explicabo iste, fuga soluta. Alias vitae, aliquid quidem pariatur voluptatibus maxime, molestiae harum iure laborum adipisci ratione voluptatum temporibus unde labore perferendis beatae necessitatibus repellat, sunt reiciendis sed qui. Inventore recusandae odit cum repellendus.</p>
 				<div class="signature">
 					<Signature></Signature>
@@ -124,9 +124,6 @@ import Signature from "../components/Signature.astro";
 	#signature {
 		stroke-dasharray: 908;
 	}
-	.info {
-		color: rgb(241, 37, 211);
-	}
 	.skill {
 		width: 100%;
 	}
@@ -144,10 +141,14 @@ import Signature from "../components/Signature.astro";
 		display: flex;
 		flex-direction: column;
 	}
+	.glow {
+		color: rgb(255, 170, 0) !important;
+		text-shadow: 1px 1px 5px rgb(232, 122, 37);
+	}
 	@media screen and (max-width:700px) {
 	  /* CSS for screens that are 700 pixels or less will be put in this section */
 		html, body {
-			background-color: rgb(97, 0, 0);
+			background-color: #121212;
 			overflow: auto !important;
 			width: 100% !important;
 			height: 100% !important;
@@ -159,17 +160,8 @@ import Signature from "../components/Signature.astro";
 
 			width: 100% !important;
 		}
-		.terminal-container {
-			all: unset;
-
-			display: grid;
-			place-items: center;
-			height: 100% !important;
-			width: 100%;
-			margin-top: 2rem;
-		}
-		.terminal {
-			margin: 0 !important;
+		h1 {
+			margin-top: 0 !important;
 		}
 		.info-container {
 			all: unset;
@@ -178,6 +170,22 @@ import Signature from "../components/Signature.astro";
 			height: 100%;
 			margin: 0 !important;
 			padding-inline: 4rem;
+		}
+		.terminal-container {
+			all: unset;
+
+			display: grid;
+			place-items: center;
+			height: 700px !important;
+			width: 100%;
+			margin-top: 2rem;
+		}
+		.terminal {
+			max-height: unset;
+
+			height: 600px;
+			width: 90%;
+			margin: 0 !important;
 		}
 		.skill-container {
 			display: grid; 
