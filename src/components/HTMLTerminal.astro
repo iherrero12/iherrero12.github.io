@@ -19,7 +19,42 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // get the terminal object
+    const restrictedCommands = ["ls", "cd", "nano", "vi"]
+
+    const prompt = `
+        <p>Welcome to my personal site!</p>
+        <p>In order to interact with the terminal type supported commads. You can find available commands typing 'help'.</p>
+        <div style="border-top: 1px solid rgba(240, 240, 240, 0.87); width: 100%;margin-bottom: 2px"></div>
+        <div style="border-top: 1px solid rgba(240, 240, 240, 0.87); width: 100%;margin-bottom: 0.75rem"></div>
+    `
+
+    const commandOutputs = {
+        "pwd": `<p style="margin:0">/home/iherrero/</p>`,
+        "uname": `<p style="margin:0">herrerOS</p>`,
+        "contact": `<p style="margin:0">ihortega12@gmail.com, etc...</p>`,
+        "whoami": `
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <img style="max-width: 35%;min-width: 35%;margin-top:0.5rem;margin-bottom:0.5rem;" src="/img/profile_pic.png" alt="Profile Picture of Iñigo Herrero">
+                
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">     █████╗                                                                                    </pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">     ╚════╝                                                                                    </pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">██╗███╗   ██╗██╗ ██████╗  ██████╗     ██╗  ██╗███████╗██████╗ ██████╗ ███████╗██████╗  ██████╗ </pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">██║████╗  ██║██║██╔════╝ ██╔═══██╗    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔═══██╗</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">██║██╔██╗ ██║██║██║  ███╗██║   ██║    ███████║█████╗  ██████╔╝██████╔╝█████╗  ██████╔╝██║   ██║</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">██║██║╚██╗██║██║██║   ██║██║   ██║    ██╔══██║██╔══╝  ██╔══██╗██╔══██╗██╔══╝  ██╔══██╗██║   ██║</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">██║██║ ╚████║██║╚██████╔╝╚██████╔╝    ██║  ██║███████╗██║  ██║██║  ██║███████╗██║  ██║╚██████╔╝</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;color: rgb(255, 170, 0);">╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝  ╚═════╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ </pre>
+
+                <span style="margin-bottom: 1rem;margin-top: 0.5rem;max-width:650px">
+                    Hi! I am a computer engineer based in Andoain. I am currently studying a Master's degree in Data Analysis, Cybersecurity and Cloud Computing at Mondragon Unibertsitatea. 
+                </span>
+            </div>
+        `,
+        "help": `<p style="margin:0">Available commands:</br>pwd</br>uname</p>`
+    };
+
+
+    // Get the terminal object
     const terminal = document.getElementById("terminal");
     let commandPreview;
     let currentCommand = "";
@@ -35,6 +70,26 @@ document.addEventListener("DOMContentLoaded", function() {
             inputLine.innerHTML = `<p style="margin: 0;"><span style="color: rgb(255, 170, 0); font-weight: 600;text-shadow: 1px 1px 5px rgb(232, 122, 37);">iherrero@webpage</span> ~ </p>`;
             inputLine.firstChild.appendChild(commandPreview)
             terminal.appendChild(inputLine);
+    }
+
+    // Función para mostrar el comando y la salida en el terminal
+    function printCommandToTerminal(command, output) {
+        
+        let finalCommand = document.createElement("span");
+        finalCommand.textContent = command;
+        inputLine.firstChild.appendChild(finalCommand);
+
+        if (output) {
+            const outputLine = document.createElement("div");
+            outputLine.innerHTML = output;
+            terminal.appendChild(outputLine);
+        }
+    }
+
+    function printToTerminal(element) {
+        const outputLine = document.createElement("div");
+        outputLine.innerHTML = element;
+        terminal.appendChild(outputLine);
     }
 
     // Execute function when user releases a key on the keyboard
@@ -71,68 +126,17 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (validKeys.test(event.key) && currentCommand.length < 20) {
             currentCommand += event.key;
         }
-        // 
         commandPreview.textContent = currentCommand;
     });
-
-    // Función para mostrar el comando y la salida en el terminal
-    function printCommandToTerminal(command, output) {
-        
-        let finalCommand = document.createElement("span");
-        finalCommand.textContent = command;
-        inputLine.firstChild.appendChild(finalCommand);
-
-        if (output) {
-            const outputLine = document.createElement("div");
-            outputLine.innerHTML = output;
-            terminal.appendChild(outputLine);
-        }
-    }
-
-    function printToTerminal(element) {
-        const outputLine = document.createElement("div");
-        outputLine.innerHTML = element;
-        terminal.appendChild(outputLine);
-    }
-
-
-
-    const restrictedCommands = ["ls", "cd", "nano", "vi"]
-
-    const prompt = `
-        <p>Welcome to my personal site!</p>
-        <p>In order to interact with the terminal type supported commads. You can find available commands typing 'help'.</p>
-        <p>=====================================================</p>
-    `
-
-    const commandOutputs = {
-        "pwd": `<p style="margin:0">/home/iherrero/</p>`,
-        "uname": `<p style="margin:0">herrerOS</p>`,
-        "whoami": `
-
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <img style="max-width: 35%;margin-top:0.5rem;margin-bottom:0.5rem;" src="/src/assets/profile_pic.png" alt="Profile Picture of Iñigo Herrero">
-                
-                <pre style="font-size:5px;margin:0;font-family:monospace;">     █████╗                                                                                    </pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">     ╚════╝                                                                                    </pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">██╗███╗   ██╗██╗ ██████╗  ██████╗     ██╗  ██╗███████╗██████╗ ██████╗ ███████╗██████╗  ██████╗ </pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">██║████╗  ██║██║██╔════╝ ██╔═══██╗    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔═══██╗</pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">██║██╔██╗ ██║██║██║  ███╗██║   ██║    ███████║█████╗  ██████╔╝██████╔╝█████╗  ██████╔╝██║   ██║</pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">██║██║╚██╗██║██║██║   ██║██║   ██║    ██╔══██║██╔══╝  ██╔══██╗██╔══██╗██╔══╝  ██╔══██╗██║   ██║</pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">██║██║ ╚████║██║╚██████╔╝╚██████╔╝    ██║  ██║███████╗██║  ██║██║  ██║███████╗██║  ██║╚██████╔╝</pre>
-                <pre style="font-size:5px;margin:0;font-family:monospace;">╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝  ╚═════╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ </pre>
-
-                <span style="margin-bottom: 1rem">Hi! I am a developer based on Andoain, Spain.</span>
-            </div>
-        `,
-        "help": `<p style="margin:0">Available commands:</br>pwd</br>uname</p>`
-    };
-
-    printToTerminal(prompt);
-    addNewInputLine();
     
+    // Initial commands to set terminal
+    // Print prompt to terminal
+    printToTerminal(prompt);
+    // Add input line
+    addNewInputLine();
+    // Print 'whoami' command to terminal
     printCommandToTerminal("whoami", commandOutputs["whoami"]);
-
+    // Add input line
     addNewInputLine();
 });
 </script>

@@ -27,7 +27,8 @@ import Signature from "../components/Signature.astro";
 			<div class="about">
 				<h1>about me</h1>
 				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  <em>He/him</em></p>
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore quaerat quae reprehenderit minus necessitatibus vitae quisquam explicabo iste, fuga soluta. Alias vitae, aliquid quidem pariatur voluptatibus maxime, molestiae harum iure laborum adipisci ratione voluptatum temporibus unde labore perferendis beatae necessitatibus repellat, sunt reiciendis sed qui. Inventore recusandae odit cum repellendus.</p>
+				<p style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
+				<p>I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
 				<div class="signature">
 					<Signature></Signature>
 				</div>
@@ -35,17 +36,17 @@ import Signature from "../components/Signature.astro";
 			<div class="skills">
 				<h2>my skills</h3>
 				<div class="skill-container">
-					<SkillCard icon="fa-solid fa-infinity" title="devops" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
-					<SkillCard icon="fa-solid fa-brain" title="AI development" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
-					<SkillCard icon="fa-solid fa-shield-halved" title="cybersecurity" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
-					<SkillCard icon="fa-solid fa-shield-halved" title="sample title" body="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt et quas placeat illum debitis sed facere autem error accusamus quae!"/>
+					<SkillCard icon="fa-solid fa-infinity" title="devops" body="I drive software development efficiency and quality through DevOps practices and tools."/>
+					<SkillCard icon="fa-solid fa-brain" title="AI development" body="I create intelligent solutions harnessing the power of artificial intelligence by means of deep learning."/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="cybersecurity" body="I safeguard systems and data through robust and proactive security strategies and measures."/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="data visualization" body="I transform complex data into impactful visualizations to drive informed decision-making."/>
 				</div>
 			</div>
 			<div class="projects">
 				<h2>projects</h3>
 				<div class="project-container">
-					<div class="project"><Project tag="deep-learning" title="museguro" body="Accident prediction on NY streets using a distributed system for machine learning training and YOLOv8 for pedestrian, bicycle and car count from streaming image source."></Project></div>
-					<div class="project"><Project tag="microservices" title="microservice architecture on producing company" body="poner una descripción al PBL1 del máster."></Project></div>
+					<div class="project"><Project tags={["deep learning","data intelligence","cloud architecture"]} title="museguro" body="Design of a distributed system with a highly scalable big data architecture for training machine learning models, incorporating deep learning for real-time subject counting from streaming image sources, aimed at predicting accidents on the streets of New York City."></Project></div>
+					<div class="project"><Project tags={["microservices"]} title="microservice architecture on producing company" body="poner una descripción al PBL1 del máster."></Project></div>
 				</div>
 			</div>
 		</div>
@@ -99,8 +100,9 @@ import Signature from "../components/Signature.astro";
 		padding: 0.5rem;
 		height: 75%;
 		max-height: 75%;
-		width: 100%;
-		transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1)
+		width: 90%;
+		max-width: 90%;
+		transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.terminal:hover {
 		box-shadow: 1px 1px 5px rgb(232, 122, 37);
@@ -113,6 +115,7 @@ import Signature from "../components/Signature.astro";
 		max-width: 750px;
 		overflow: auto;
 		padding-inline: 4rem;
+		margin-bottom: 0.25rem !important;
 	}
 	.info-container h3, p, div {
 		margin-bottom: 1.5rem;
@@ -136,6 +139,7 @@ import Signature from "../components/Signature.astro";
 		height: 100%;
 		
 		place-items: center;
+		align-items: stretch;
 	}
 	.project-container {
 		display: flex;

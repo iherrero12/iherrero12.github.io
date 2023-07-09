@@ -2,10 +2,10 @@
 export interface Props {
 	title: string;
 	body: string;
-	tag: string;
+	tags: string[];
 }
 
-const { tag, title, body } = Astro.props;
+const { tags, title, body } = Astro.props;
 ---
 
 <li class="project">
@@ -13,10 +13,12 @@ const { tag, title, body } = Astro.props;
 		{title}
 	</h2>
 	<div class="tag">
-		<span>{tag}</span>
+		{tags.map((tag, index) => (
+			<span key={index}>{tag}</span>
+		))}
 	</div>
 	<p>
-		{'>'} {body}
+		{body}
 	</p>
 </li>
 <style>
@@ -70,7 +72,13 @@ const { tag, title, body } = Astro.props;
 		padding-left: 1rem;
 		padding-right: 1rem;
 		border-radius: 1rem;
+		margin-right: 0.5rem;
+		margin-bottom: 0.5rem;
 		color: rgb(255, 170, 0);
+		transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.tag span:hover {
+		background-color: rgba(255, 170, 0, 0.219);
 	}
 	li p {
 		padding-right: 2rem;
