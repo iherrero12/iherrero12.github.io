@@ -25,6 +25,18 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentCommand = "";
     let inputLine;
 
+    function addNewInputLine() {
+            // Create new CommandPreview object
+            commandPreview = document.createElement("span");
+            commandPreview.id = "commandPreview"
+
+            // Create new command input line
+            inputLine = document.createElement("div");
+            inputLine.innerHTML = `<p style="margin: 0;"><span style="color: rgb(255, 170, 0); font-weight: 600;text-shadow: 1px 1px 5px rgb(232, 122, 37);">iherrero@webpage</span> ~ </p>`;
+            inputLine.firstChild.appendChild(commandPreview)
+            terminal.appendChild(inputLine);
+    }
+
     // Execute function when user releases a key on the keyboard
     document.addEventListener("keyup", function(event) {
         const validKeys = /^[a-zA-Z\s]$/;
@@ -41,24 +53,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Process command
             if (commandOutputs[command]) {
-                printToTerminal(command, commandOutputs[command]);
+                printCommandToTerminal(command, commandOutputs[command]);
             } else if (restrictedCommands.includes(command)) {
-                printToTerminal(command, `<p style="margin:0">You have no permission to run this command.</p>`);
+                printCommandToTerminal(command, `<p style="margin:0">You have no permission to run this command.</p>`);
             } else if (command === "") {
-                printToTerminal(command, ``);
+                printCommandToTerminal(command, ``);
             } else {
-                printToTerminal(command, `<p style="margin:0">Command not found.</p>`);
+                printCommandToTerminal(command, `<p style="margin:0">Command not found.</p>`);
             }
             
-            // Create new CommandPreview object
-            commandPreview = document.createElement("span");
-            commandPreview.id = "commandPreview"
-
-            // Create new command input line
-            inputLine = document.createElement("div");
-            inputLine.innerHTML = `<p style="margin: 0;"><span style="color: rgb(255, 170, 0); font-weight: 600;text-shadow: 1px 1px 5px rgb(232, 122, 37);">iherrero@webpage</span> ~ </p>`;
-            inputLine.firstChild.appendChild(commandPreview)
-            terminal.appendChild(inputLine);
+            addNewInputLine();
 
             // Scroll terminal
             terminal.scrollTop = terminal.scrollHeight;
@@ -72,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Función para mostrar el comando y la salida en el terminal
-    function printToTerminal(command, output) {
+    function printCommandToTerminal(command, output) {
         
         let finalCommand = document.createElement("span");
         finalCommand.textContent = command;
@@ -85,32 +89,50 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Agregar la primera línea de user input
+    function printToTerminal(element) {
+        const outputLine = document.createElement("div");
+        outputLine.innerHTML = element;
+        terminal.appendChild(outputLine);
+    }
 
-    commandPreview = document.createElement("span");
-    commandPreview.id = "commandPreview"
-    
-    inputLine = document.createElement("div");
-    inputLine.innerHTML = `<p style="margin: 0;"><span style="color: rgb(255, 170, 0); font-weight: 600;text-shadow: 1px 1px 5px rgb(232, 122, 37);">iherrero@webpage</span> ~ </p>`;
-    inputLine.firstChild.appendChild(commandPreview);
-    terminal.appendChild(inputLine);
+
 
     const restrictedCommands = ["ls", "cd", "nano", "vi"]
+
+    const prompt = `
+        <p>Welcome to my personal site!</p>
+        <p>In order to interact with the terminal type supported commads. You can find available commands typing 'help'.</p>
+        <p>=====================================================</p>
+    `
 
     const commandOutputs = {
         "pwd": `<p style="margin:0">/home/iherrero/</p>`,
         "uname": `<p style="margin:0">herrerOS</p>`,
         "whoami": `
-        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <img style="max-width: 50%;" src="../../img/profile_pic.png" alt="Profile Picture of Iñigo Herrero">
-            <p>IÑIGO HERRERO</p>
-            <span>Hi! I am a developer based on Andoain, Spain.</span>
-        </div>
+
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <img style="max-width: 35%;margin-top:0.5rem;margin-bottom:0.5rem;" src="/src/assets/profile_pic.png" alt="Profile Picture of Iñigo Herrero">
+                
+                <pre style="font-size:5px;margin:0;font-family:monospace;">     █████╗                                                                                    </pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">     ╚════╝                                                                                    </pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">██╗███╗   ██╗██╗ ██████╗  ██████╗     ██╗  ██╗███████╗██████╗ ██████╗ ███████╗██████╗  ██████╗ </pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">██║████╗  ██║██║██╔════╝ ██╔═══██╗    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔═══██╗</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">██║██╔██╗ ██║██║██║  ███╗██║   ██║    ███████║█████╗  ██████╔╝██████╔╝█████╗  ██████╔╝██║   ██║</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">██║██║╚██╗██║██║██║   ██║██║   ██║    ██╔══██║██╔══╝  ██╔══██╗██╔══██╗██╔══╝  ██╔══██╗██║   ██║</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">██║██║ ╚████║██║╚██████╔╝╚██████╔╝    ██║  ██║███████╗██║  ██║██║  ██║███████╗██║  ██║╚██████╔╝</pre>
+                <pre style="font-size:5px;margin:0;font-family:monospace;">╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝  ╚═════╝     ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ </pre>
+
+                <span style="margin-bottom: 1rem">Hi! I am a developer based on Andoain, Spain.</span>
+            </div>
         `,
         "help": `<p style="margin:0">Available commands:</br>pwd</br>uname</p>`
     };
 
-    printToTerminal("whoami", commandOutputs["whoami"]);
+    printToTerminal(prompt);
+    addNewInputLine();
+    
+    printCommandToTerminal("whoami", commandOutputs["whoami"]);
 
+    addNewInputLine();
 });
 </script>
