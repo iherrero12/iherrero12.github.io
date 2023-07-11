@@ -27,8 +27,8 @@ import Signature from "../components/Signature.astro";
 			<div class="about">
 				<h1>about me</h1>
 				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  <em>He/him</em></p>
-				<p style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
-				<p>I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
+				<p class="justified" style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
+				<p class="justified">I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
 				<div class="signature">
 					<Signature></Signature>
 				</div>
@@ -148,6 +148,11 @@ import Signature from "../components/Signature.astro";
 	.glow {
 		color: rgb(255, 170, 0) !important;
 		text-shadow: 1px 1px 5px rgb(232, 122, 37);
+	}
+	.justified {
+		text-align: justify;
+		text-justify: inter-word;
+		word-spacing: -0.1em;
 	}
 	@media screen and (max-width:700px) {
 	  /* CSS for screens that are 700 pixels or less will be put in this section */
