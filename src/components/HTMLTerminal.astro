@@ -19,7 +19,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const restrictedCommands = ["ls", "cd", "nano", "vi"]
+    const restrictedCommands = ["ls", "cd", "nano", "vi", "visudo"]
 
     const prompt = `
         <p>Welcome to my personal site!</p>
@@ -31,7 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const commandOutputs = {
         "pwd": `<p style="margin:0">/home/iherrero/</p>`,
         "uname": `<p style="margin:0">herrerOS</p>`,
-        "contact": `<p style="margin:0">ihortega12@gmail.com, etc...</p>`,
+        "contact": `
+            <ul>
+                <li>Email: <a style="color:darkgoldenrod" href="mailto:ihortega12@gmail.com" target="_blank">ihortega12@gmail.com</a></li>
+                <li>LinkedIn: <a style="color:darkgoldenrod" href="https://www.linkedin.com/in/inigo-herrero-ortega/" target="_blank">linkedin.com/in/inigo-herrero-ortega</a></li>
+                <li>GitHub: <a style="color:darkgoldenrod" href="https://github.com/iherrero12" target="_blank">github.com/iherrero12</a></li>
+            </ul>
+        `,
         "whoami": `
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <img style="max-width: 35%;min-width: 35%;margin-top:0.5rem;margin-bottom:0.5rem;" src="/img/profile_pic.png" alt="Profile Picture of Iñigo Herrero">
@@ -50,7 +56,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 </span>
             </div>
         `,
-        "help": `<p style="margin:0">Available commands:</br>pwd</br>uname</p>`
+        "help": `
+            <p style="margin:0">Available commands:</br>- pwd</br>- uname</br>- contact</br>- whoami</br>- help</p>
+        `
     };
 
 
