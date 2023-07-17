@@ -4,6 +4,7 @@ import HTMLTerminal from "../components/HTMLTerminal.astro"
 import SkillCard from "../components/SkillCard.astro";
 import Project from "../components/Project.astro";
 import Signature from "../components/Signature.astro";
+import LinkButton from "../components/LinkButton.astro"
 ---
 
 <!DOCTYPE html>
@@ -28,9 +29,9 @@ import Signature from "../components/Signature.astro";
 				<h1>about me</h1>
 				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  ♂️<em>He/him</em></p>
 				<div class="downloads">
-					<a style="width:20px;height:20px;background-color:blue;padding:10px;" href="https://www.google.com" target="_blank">email</a>
-					<a style="width:20px;height:20px;background-color:blue;padding:10px;" href="https://www.google.com" target="_blank">linkedin</a>
-					<a style="width:20px;height:20px;background-color:blue;padding:10px;" href="https://www.google.com" target="_blank">Download CV</a>
+					<LinkButton icon="fa-solid fa-envelope" title="Contact" href="mailto:ihortega12@gmail.com"></LinkButton>
+					<LinkButton icon="fa-brands fa-linkedin-in" title="Connect" href="https://www.linkedin.com/in/inigo-herrero-ortega/"></LinkButton>
+					<LinkButton icon="fa-regular fa-circle-down" title="Download CV" href="/doc/cv-iherrero-en.pdf"></LinkButton>
 				</div> 
 				<p class="justified" style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
 				<p class="justified">I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
