@@ -1,0 +1,216 @@
+---
+import Terminal from "../components/Terminal.astro";
+import HTMLTerminal from "../components/HTMLTerminal.astro"
+import SkillCard from "../components/SkillCard.astro";
+import Project from "../components/Project.astro";
+import Signature from "../components/Signature.astro";
+import LinkButton from "../components/LinkButton.astro"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iñigo Herrero</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	<div class="app">
+		<div class="terminal-container">
+			<div class="terminal"><HTMLTerminal></HTMLTerminal></div>
+		</div>
+		<div class="info-container">
+			<div class="about">
+				<h1>about me</h1>
+				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  ♂️<em>He/him</em></p>
+				<div class="downloads">
+					<LinkButton icon="fa-solid fa-envelope" title="Contact" href="mailto:ihortega12@gmail.com"></LinkButton>
+					<LinkButton icon="fa-brands fa-linkedin-in" title="Connect" href="https://www.linkedin.com/in/inigo-herrero-ortega/"></LinkButton>
+					<LinkButton icon="fa-regular fa-circle-down" title="Download CV" href="/doc/cv-iherrero-en.pdf"></LinkButton>
+				</div> 
+				<p class="justified" style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
+				<p class="justified">I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
+				<div class="signature">
+					<Signature></Signature>
+				</div>
+			</div>
+			<div class="skills">
+				<h2>my skills</h3>
+				<div class="skill-container">
+					<SkillCard icon="fa-solid fa-infinity" title="devops" body="I drive software development efficiency and quality through DevOps practices and tools."/>
+					<SkillCard icon="fa-solid fa-brain" title="AI development" body="I create intelligent solutions harnessing the power of artificial intelligence by means of deep learning."/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="cybersecurity" body="I safeguard systems and data through robust and proactive security strategies and measures."/>
+					<SkillCard icon="fa-solid fa-chart-line" title="data visualization" body="I transform complex data into impactful visualizations to drive informed decision-making."/>
+				</div>
+			</div>
+			<div class="projects">
+				<h2>projects</h3>
+				<div class="project-container">
+					<div class="project"><Project tags={["deep learning","data intelligence","cloud architecture"]} title="museguro" body="Design of a distributed system with a highly scalable big data architecture for training machine learning models, incorporating deep learning for real-time subject counting from streaming image sources, aimed at predicting accidents on the streets of New York City."></Project></div>
+					<div class="project"><Project tags={["microservices","machine learning","cybersecurity"]} title="microservice architecture on producing company" body="Design of a hardened AWS infrastructure that supports a microservices-based application and is safeguarded by AI-driven firewall rules, trained using an SSH honeypot."></Project></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+<style>
+	@viewport {
+	  width: device-width ;
+	  zoom: 1.0 ;
+	} 
+	* {
+		margin: 0;
+		color: rgba(240, 240, 240, 0.87);
+	}
+	html, body {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background-color: #121212;
+	}
+	h1 {
+		font-size: 50px;
+		font-weight: 700;
+		margin-top: 5rem;
+	}
+	h2 {
+		font-size: 30px;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+	.app {
+		display: flex;
+		width: 100%;
+		height: 100%;
+	}
+	.terminal-container {
+		/* background-color: #0a0c14; */
+		flex: 4;
+		height: 100vh;
+		padding-left: 2rem;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.terminal {
+		border: 2px solid rgb(255, 170, 0);
+		border-radius: 0.5rem;
+		padding: 0.5rem;
+		height: 75%;
+		max-height: 75%;
+		width: 90%;
+		max-width: 90%;
+		transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.terminal:hover {
+		box-shadow: 1px 1px 5px rgb(232, 122, 37);
+	}
+	.info-container {
+		flex: 6;
+		/* background-color: #19b405; */
+		font-family: 'Atkinson Hyperlegible', sans-serif;
+		max-height: 100vh;
+		max-width: 750px;
+		overflow: auto;
+		padding-inline: 4rem;
+		margin-bottom: 0.25rem !important;
+	}
+	.info-container h3, p, div {
+		margin-bottom: 1.5rem;
+	}
+	.signature {
+		display: flex;
+		justify-content: right;
+	}
+	#signature {
+		stroke-dasharray: 908;
+	}
+	.skill {
+		width: 100%;
+	}
+	.skill-container {
+		display: grid; 
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 1fr 1fr;
+
+		gap: 2rem;
+		height: 100%;
+		
+		place-items: center;
+		align-items: stretch;
+	}
+	.project-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.glow {
+		color: rgb(255, 170, 0) !important;
+		text-shadow: 1px 1px 5px rgb(232, 122, 37);
+	}
+	.justified {
+		text-align: justify;
+		text-justify: inter-word;
+		word-spacing: -0.1em;
+	}
+	@media screen and (max-width:700px) {
+	  /* CSS for screens that are 700 pixels or less will be put in this section */
+		html, body {
+			background-color: #121212;
+			overflow: auto !important;
+			width: 100% !important;
+			height: 100% !important;
+		}
+		.app {
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 2rem;
+
+			width: 100% !important;
+		}
+		h1 {
+			margin-top: 0 !important;
+		}
+		.info-container {
+			all: unset;
+
+			font-family: 'Atkinson Hyperlegible', sans-serif;
+			height: 100%;
+			margin: 0 !important;
+			padding-inline: 4rem;
+		}
+		.terminal-container {
+			all: unset;
+
+			display: grid;
+			place-items: center;
+			height: 700px !important;
+			width: 100%;
+			margin-top: 2rem;
+		}
+		.terminal {
+			max-height: unset;
+
+			height: 600px;
+			width: 90%;
+			margin: 0 !important;
+		}
+		.skill-container {
+			display: grid; 
+			grid-template-rows: 1fr 1fr 1fr 1fr;
+			grid-template-columns: 1fr;
+			overflow: auto;
+			gap: 2rem;
+			height: 100%;
+			
+			place-items: center;
+		}
+	}
+</style>
