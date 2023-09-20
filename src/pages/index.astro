@@ -1,5 +1,4 @@
 ---
-import Terminal from "../components/Terminal.astro";
 import HTMLTerminal from "../components/HTMLTerminal.astro"
 import SkillCard from "../components/SkillCard.astro";
 import Project from "../components/Project.astro";
@@ -20,39 +19,42 @@ import LinkButton from "../components/LinkButton.astro"
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+	<div class="header">
+		<a href="/en/">EN</a>
+	</div>
 	<div class="app">
 		<div class="terminal-container">
 			<div class="terminal"><HTMLTerminal></HTMLTerminal></div>
 		</div>
 		<div class="info-container">
 			<div class="about">
-				<h1>about me</h1>
-				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  ♂️<em>He/him</em></p>
+				<h1>niri buruz</h1>
+				<p class="info glow">📍<em>Andoain, Espainia</em>  |  🎂<em>12-08-2000</em>  |  ♂️<em>He/him</em></p>
 				<div class="downloads">
-					<LinkButton icon="fa-solid fa-envelope" title="Contact" href="mailto:ihortega12@gmail.com"></LinkButton>
-					<LinkButton icon="fa-brands fa-linkedin-in" title="Connect" href="https://www.linkedin.com/in/inigo-herrero-ortega/"></LinkButton>
-					<LinkButton icon="fa-regular fa-circle-down" title="Download CV" href="/doc/cv-iherrero-en.pdf"></LinkButton>
+					<LinkButton icon="fa-solid fa-envelope" title="Kontaktatu" href="mailto:ihortega12@gmail.com"></LinkButton>
+					<LinkButton icon="fa-brands fa-linkedin-in" title="Konektatu" href="https://www.linkedin.com/in/inigo-herrero-ortega/"></LinkButton>
+					<LinkButton icon="fa-regular fa-circle-down" title="Jaitsi CVa" href="/doc/cv-iherrero-eu.pdf"></LinkButton>
 				</div> 
-				<p class="justified" style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
-				<p class="justified">I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
+				<p class="justified" style="margin-bottom:0.75rem">Andoainen bizi den informatika ingeniaria naiz. Soluzio originalak diseinatzen ditut, zeinetan garapenari, ikerketari eta datuen bistarapenari buruzko ezagutza hornitzen dut.</p>
+				<p class="justified">Proposatutako arazoei konponbide teknologikoekin eta azkeneko berrikuntzekin aurre egitea gustatzen zait. Nire diziplina anitzeko ezagutzak, erronkei ikuspuntu ezberdinetatik hurbiltzea ahalbidetzen dit, trebetasun teknikoa pentsaera sortzaile batekin nahastuz.</p>
 				<div class="signature">
 					<Signature></Signature>
 				</div>
 			</div>
 			<div class="skills">
-				<h2>my skills</h3>
+				<h2>nire gaitasunak</h3>
 				<div class="skill-container">
-					<SkillCard icon="fa-solid fa-infinity" title="devops" body="I drive software development efficiency and quality through DevOps practices and tools."/>
-					<SkillCard icon="fa-solid fa-brain" title="AI development" body="I create intelligent solutions harnessing the power of artificial intelligence by means of deep learning."/>
-					<SkillCard icon="fa-solid fa-shield-halved" title="cybersecurity" body="I safeguard systems and data through robust and proactive security strategies and measures."/>
-					<SkillCard icon="fa-solid fa-chart-line" title="data visualization" body="I transform complex data into impactful visualizations to drive informed decision-making."/>
+					<SkillCard icon="fa-solid fa-infinity" title="DevOps" body="Software garapenaren eraginkortasuna eta kalitatea bermatzen ditut DevOps jardunbideen eta tresnen bidez."/>
+					<SkillCard icon="fa-solid fa-brain" title="IA garapena" body="Adimen artifizialaren ahalmenaz baliatzen naiz ikasketa sakonaren bitartez soluzio adimendunak sortzeko."/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="Zibersegurtasuna" body="Sistemak eta datuak babesten ditut segurtasun segurtasun neurri eta estrategia sendoak erabiliaz."/>
+					<SkillCard icon="fa-solid fa-chart-line" title="Datuen errepresentazioa" body="Errepresentazio bisualen bitartez datu konplexuak erabiltzen ditut informazioan oinarritutako erabakiak hartzeko."/>
 				</div>
 			</div>
 			<div class="projects">
-				<h2>projects</h3>
+				<h2>proiektuak</h3>
 				<div class="project-container">
-					<div class="project"><Project tags={["deep learning","data intelligence","cloud architecture"]} title="museguro" body="Design of a distributed system with a highly scalable big data architecture for training machine learning models, incorporating deep learning for real-time subject counting from streaming image sources, aimed at predicting accidents on the streets of New York City."></Project></div>
-					<div class="project"><Project tags={["microservices","machine learning","cybersecurity"]} title="microservice architecture on producing company" body="Design of a hardened AWS infrastructure that supports a microservices-based application and is safeguarded by AI-driven firewall rules, trained using an SSH honeypot."></Project></div>
+					<div class="project"><Project tags={["ikasketa sakona","datuen inteligentzia","hodei-arkitektura"]} title="MUseguro" body="Sistema banatu eta eskalagarri baten diseinua, big data kontzeptuan oinarritutako arkitektura sortzeko. Ikasketa sakona erabilita, adimen artifiziala subjektuak streaming bidezko irudietan detektatu eta New York-eko kaleetako istripuak aurreikusteko gai da."></Project></div>
+					<div class="project"><Project tags={["mikrozerbitzuak","ikasketa automatikoa","zibersegurtasuna"]} title="Mikrozerbitzuen arkitektura enpresa ekoizlean" body="AWS plataforman desplegatutako azpiegitura seguru baten diseinua, mikrozerbitzuetan oinarritutako aplikazio bat zerbitzatzen duena. Sistema, inteligentzia artifiziala erabilita sortutako firewall arauekin babestuta dago, ssh honey-pot baten bidez entrenatua izan dena."></Project></div>
 				</div>
 			</div>
 		</div>
@@ -89,6 +91,21 @@ import LinkButton from "../components/LinkButton.astro"
 		display: flex;
 		width: 100%;
 		height: 100%;
+	}
+	.header {
+		display: flex;
+		flex-direction: row-reverse;
+		margin-bottom: 0px;
+		padding-top: 3px;
+		size: 13px;
+		font-family: 'Atkinson Hyperlegible', sans-serif;
+	}
+	.header a {
+		margin-right: 1rem;
+		text-decoration: none;
+	}
+	.header :first-child {
+		margin-right: 5rem;
 	}
 	.terminal-container {
 		/* background-color: #0a0c14; */
