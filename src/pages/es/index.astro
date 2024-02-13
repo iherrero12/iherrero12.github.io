@@ -20,8 +20,8 @@ import LinkButton from "../../components/LinkButton.astro"
 </head>
 <body>
 	<div class="header">
+		<a href="/en/">EN</a>
 		<a href="/">EU</a>
-		<a href="/es/">ES</a>
 	</div>
 	<div class="app">
 		<div class="terminal-container">
@@ -29,33 +29,33 @@ import LinkButton from "../../components/LinkButton.astro"
 		</div>
 		<div class="info-container">
 			<div class="about">
-				<h1>about me</h1>
-				<p class="info glow">📍<em>Andoain, Spain</em>  |  🎂<em>12-08-2000</em>  |  ♂️<em>He/him</em></p>
+				<h1>sobre mí</h1>
+				<p class="info glow">📍<em>Andoain, España</em>  |  🎂<em>12-08-2000</em>  |  ♂️<em>He/him</em></p>
 				<div class="downloads">
-					<LinkButton icon="fa-solid fa-envelope" title="Contact" href="mailto:ihortega12@gmail.com"></LinkButton>
-					<LinkButton icon="fa-brands fa-linkedin-in" title="Connect" href="https://www.linkedin.com/in/inigo-herrero-ortega/"></LinkButton>
-					<LinkButton icon="fa-regular fa-circle-down" title="Download CV" href="/doc/cv-iherrero-en.pdf"></LinkButton>
+					<LinkButton icon="fa-solid fa-envelope" title="Contactar" href="mailto:ihortega12@gmail.com"></LinkButton>
+					<LinkButton icon="fa-brands fa-linkedin-in" title="Conectar" href="https://www.linkedin.com/in/inigo-herrero-ortega/"></LinkButton>
+					<LinkButton icon="fa-regular fa-circle-down" title="Descargar CV" href="/doc/cv-iherrero-es.pdf"></LinkButton>
 				</div> 
-				<p class="justified" style="margin-bottom:0.75rem">I'm a computer engineer living in Andoain. I design unique solutions in which I provide knowledge on development, research and visual representation.</p>
-				<p class="justified">I enjoy tackling problems with technological solutions and the latest innovations. My multidisciplinary background allows me to approach challenges from different perspectives, combining technical expertise with a creative mindset.</p>
+				<p class="justified" style="margin-bottom:0.75rem">Soy un ingeniero informático que vive en Andoain y se especializa en el diseño de soluciones únicas que integran desarrollo, investigación y representación visual.</p>
+				<p class="justified">Apasionado de la resolución de problemas y muy interesado en las últimas innovaciones tecnológicas, aporto un enfoque multidisciplinar a los retos, combinando conocimientos técnicos con una mentalidad creativa.</p>
 				<div class="signature">
 					<Signature></Signature>
 				</div>
 			</div>
 			<div class="skills">
-				<h2>my skills</h3>
+				<h2>mis habilidades</h3>
 				<div class="skill-container">
-					<SkillCard icon="fa-solid fa-infinity" title="devops" body="I drive software development efficiency and quality through DevOps practices and tools."/>
-					<SkillCard icon="fa-solid fa-brain" title="AI development" body="I create intelligent solutions harnessing the power of artificial intelligence by means of deep learning."/>
-					<SkillCard icon="fa-solid fa-shield-halved" title="cybersecurity" body="I safeguard systems and data through robust and proactive security strategies and measures."/>
-					<SkillCard icon="fa-solid fa-chart-line" title="data visualization" body="I transform complex data into impactful visualizations to drive informed decision-making."/>
+					<SkillCard icon="fa-solid fa-infinity" title="DevOps" body="Garantizo la eficacia y calidad del desarrollo de software mediante directrices y herramientas de DevOps."/>
+					<SkillCard icon="fa-solid fa-brain" title="Desarrollo IA" body="Utilizo las posibilidades de la inteligencia artificial para crear soluciones inteligentes."/>
+					<SkillCard icon="fa-solid fa-shield-halved" title="Ciberseguridad" body="Protejo sistemas y datos utilizando estrategias y medidas de seguridad robustas."/>
+					<SkillCard icon="fa-solid fa-chart-line" title="Representación de Datos" body="Me valgo de representaciones visuales para ayudar a tomar decisiones basadas en la información."/>
 				</div>
 			</div>
 			<div class="projects">
-				<h2>projects</h3>
+				<h2>proyectos</h3>
 				<div class="project-container">
-					<div class="project"><Project tags={["deep learning","data intelligence","cloud architecture"]} title="museguro" body="Design of a distributed system with a highly scalable big data architecture for training machine learning models, incorporating deep learning for real-time subject counting from streaming image sources, aimed at predicting accidents on the streets of New York City."></Project></div>
-					<div class="project"><Project tags={["microservices","machine learning","cybersecurity"]} title="microservice architecture on producing company" body="Design of a hardened AWS infrastructure that supports a microservices-based application and is safeguarded by AI-driven firewall rules, trained using an SSH honeypot."></Project></div>
+					<div class="project"><Project tags={["aprendizaje profundo","inteligencia de datos","arquitectura en la nube"]} title="MUseguro" body="Diseño e implantación de un sistema distribuído y escalable que permite crear una arquitectura basada en el concepto del Big Data. Utilizando el aprendizaje profundo, un modelo de inteligencia artificial detecta a sujetos en imágenes en streaming y es capaz de predecir accidentes en las calles de Nueva York."></Project></div>
+					<div class="project"><Project tags={["microservicios","aprendizaje automático","ciberseguridad"]} title="Arquitectura de microservicios en empresa manufacturera" body="Diseño e implantación de una arquitectura segura desplegada en la plataforma AWS, que sirve una aplicación basada en microservicios. El sistema está protegido mediante un cortafuegos gestionado por un modelo de inteligencia artificial entrenado mediante un honeypot del servicio ssh."></Project></div>
 				</div>
 			</div>
 		</div>
